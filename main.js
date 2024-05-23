@@ -75,8 +75,11 @@ for (let etappe of ETAPPEN) {
     pulldown.innerHTML += `<option ${status} value="${etappe.user}">Etappe ${etappe.nr}: ${etappe.titel}</option>`;
 }
 
-pulldown.onchange = function(evt) {
+pulldown.onchange = function (evt) {
     let username = evt.target.value;
     let url = `https://${username}.github.io/biketirol`;
     window.location.href = url;
 }
+new L.Control.MiniMap(L.tileLayer("https://wmts.kartetirol.at/gdi_summer/{z}/{x}/{y}.png", {
+    attribution: `Datenquelle: <a href="https://www.data.gv.at/katalog/dataset/land-tirol_elektronischekartetirol">eGrundkarte Tirol</a>`
+}), { toggleDisplay: true }).addTo(map);
